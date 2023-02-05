@@ -9,7 +9,7 @@
 <body>
     <?php
         // echo 'Hello world!'
-      include("demo.php");
+      include("animals.php");
      ?>
 </body>
 </html>

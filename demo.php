@@ -8,13 +8,19 @@ declare(strict_types=1);
     2 -> banned
 */
 
+class UserStatuses {
+    const CREATED = 0;
+    const ACTIVATED = 1;
+    const BANNED = 2;
+}
+
 class User{
     public $id;
     public $login;
     public $name;
     private $status;
     public $created;
-    public $now;
+    private $now;
 
     public function __construct(int $id, string $login, string $name, int $status, int $created) {
         $this->id = $id;
@@ -26,15 +32,15 @@ class User{
     }
 
     public function isActive() {
-        return $this->status == 1;
+        return $this->status == UserStatuses::ACTIVATED;
     }
     
     public function activate() {
-        $this->status = 1;
+        $this->status = UserStatuses::ACTIVATED;
     }
 
     public function ban() {
-        $this->status = 2;
+        $this->status = UserStatuses::BANNED;
     }
 
 
@@ -43,7 +49,7 @@ class User{
     }
 }
 
-$user1 = new User(1, 'admin', 'Dave', 0, time());
+$user1 = new User(1, 'admin', 'Dave', UserStatuses::CREATED, time());
 
 $user1->activate();
 
